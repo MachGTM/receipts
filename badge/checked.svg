@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="212" height="20" role="img" aria-label="Receipts Standard v1: checked">
+<title>Receipts Standard v1: checked</title>
+<linearGradient id="s" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient>
+<clipPath id="r"><rect width="212" height="20" rx="3" fill="#fff"/></clipPath>
+<g clip-path="url(#r)"><rect width="146" height="20" fill="#1A2028"/><rect x="146" width="66" height="20" fill="#3B6E8F"/><rect width="212" height="20" fill="url(#s)"/></g>
+<g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="11">
+<text x="73.0" y="15" fill="#010101" fill-opacity=".3">Receipts Standard v1</text><text x="73.0" y="14">Receipts Standard v1</text>
+<text x="179.0" y="15" fill="#010101" fill-opacity=".3">checked</text><text x="179.0" y="14">checked</text></g></svg>
