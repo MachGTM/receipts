@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Check an email in your browser
+    url: https://machgtm.github.io/receipts/check/
+    about: The free receipts check. Nothing you paste leaves the page.

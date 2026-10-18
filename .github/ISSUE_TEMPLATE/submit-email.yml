@@ -1,0 +1,38 @@
+name: Submit an AI-written sales email
+description: Add an email you received to the AI SDR Receipts Index. Remove personal details first.
+title: "Email: "
+labels: ["index-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping count the receipts. Before you paste, remove every name, email address, phone number and company name that could identify a person, and replace them with `[name]`, `[company]` and so on. How we score and publish: [INDEX.md](https://github.com/MachGTM/receipts/blob/main/INDEX.md).
+  - type: textarea
+    id: email
+    attributes:
+      label: The email, with personal details removed
+      description: Include the subject line and any links or footnotes.
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: tool
+    attributes:
+      label: Which tool wrote it, if you know
+      description: Only if the email or its footer says so. Leave blank if you're guessing.
+  - type: input
+    id: received
+    attributes:
+      label: Month you received it
+      placeholder: "2026-10"
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Before you submit
+      options:
+        - label: I received this email myself.
+          required: true
+        - label: I removed names, email addresses, phone numbers and anything else that identifies a person.
+          required: true
+        - label: I'm happy for the anonymised email to be published with the index under CC BY 4.0.
+          required: true

@@ -1,0 +1,12 @@
+name: Suggest a change to the standard
+description: Propose a new rule, a clearer wording or an example for the Receipts Standard.
+title: "Standard: "
+labels: ["standard"]
+body:
+  - type: textarea
+    id: change
+    attributes:
+      label: What should change, and why?
+      description: Point to the rule (R1 to R7) or section, and give an example message if you can.
+    validations:
+      required: true
