@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="53% are hiring human SDRs. Only 8 are hiring a GTM engineer.">
+<rect width="1200" height="675" fill="#12161B"/>
+<text x="64" y="80" fill="#9AA4AF" font-size="20" font-weight="600" font-family="Outfit,Figtree,'Segoe UI',Helvetica,Arial,sans-serif">OPEN ROLES AT 123 B2B SOFTWARE COMPANIES · 19 OCTOBER 2026</text>
+<text x="64" y="148" fill="#F2F4F6" font-size="52" font-weight="600" font-family="Outfit,Figtree,'Segoe UI',Helvetica,Arial,sans-serif"><tspan fill="#24D064">53%</tspan> are hiring human SDRs.</text>
+<text x="64" y="208" fill="#F2F4F6" font-size="52" font-weight="600" font-family="Outfit,Figtree,'Segoe UI',Helvetica,Arial,sans-serif">Only 8 are hiring a "GTM engineer".</text>
+<text x="64" y="346" fill="#F2F4F6" font-size="24" font-weight="600" font-family="Outfit,Figtree,'Segoe UI',Helvetica,Arial,sans-serif">Account executives</text>
+<rect x="354" y="318" width="640" height="34" rx="4" fill="#6B7785"/>
+<text x="1008" y="346" fill="#F2F4F6" font-size="30" font-weight="600" font-family="Outfit,Figtree,'Segoe UI',Helvetica,Arial,sans-serif">1,343</text>
+<text x="64" y="406" fill="#F2F4F6" font-size="24" font-weight="600" font-family="Outfit,Figtree,'Segoe UI',Helvetica,Arial,sans-serif">SDR and BDR reps</text>
+<text x="64" y="430" fill="#9AA4AF" font-size="17" font-family="Outfit,Figtree,'Segoe UI',Helvetica,Arial,sans-serif">65 of 123 companies</text>
+<rect x="354" y="386" width="104" height="34" rx="4" fill="#24D064"/>
+<text x="472" y="414" fill="#F2F4F6" font-size="30" font-weight="600" font-family="Outfit,Figtree,'Segoe UI',Helvetica,Arial,sans-serif">218</text>
+<text x="64" y="482" fill="#F2F4F6" font-size="24" font-weight="600" font-family="Outfit,Figtree,'Segoe UI',Helvetica,Arial,sans-serif">SDR and BDR managers</text>
+<rect x="354" y="454" width="14" height="34" rx="4" fill="#6B7785"/>
+<text x="382" y="482" fill="#F2F4F6" font-size="30" font-weight="600" font-family="Outfit,Figtree,'Segoe UI',Helvetica,Arial,sans-serif">29</text>
+<text x="64" y="542" fill="#F2F4F6" font-size="24" font-weight="600" font-family="Outfit,Figtree,'Segoe UI',Helvetica,Arial,sans-serif">&quot;GTM engineer&quot; titles</text>
+<text x="64" y="566" fill="#9AA4AF" font-size="17" font-family="Outfit,Figtree,'Segoe UI',Helvetica,Arial,sans-serif">8 companies</text>
+<rect x="354" y="522" width="8" height="34" rx="4" fill="#6B7785"/>
+<text x="376" y="550" fill="#F2F4F6" font-size="30" font-weight="600" font-family="Outfit,Figtree,'Segoe UI',Helvetica,Arial,sans-serif">16</text>
+<text x="64" y="612" fill="#9AA4AF" font-size="16" font-family="Outfit,Figtree,'Segoe UI',Helvetica,Arial,sans-serif">Source: each company's public Greenhouse, Ashby or Lever job board, read 18 and 19 Oct 2026.</text>
+<text x="64" y="636" fill="#9AA4AF" font-size="16" font-family="Outfit,Figtree,'Segoe UI',Helvetica,Arial,sans-serif">Every role, with its link and date: roles.csv in this folder. MachGTM</text>
+</svg>
