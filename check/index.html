@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Receipts check: does your sales email show its sources? | MachGTM</title>
+<meta name="description" content="Free checker. Paste a cold email and see which sentences make claims, which show a source, and which guesses should be questions. Runs in your browser.">
+<link rel="canonical" href="https://machgtm.github.io/receipts/check/">
+<meta property="og:title" content="Does your sales email have receipts?">
+<meta property="og:description" content="Paste a cold email. See every claim, and whether it shows where it came from. Free, runs in your browser.">
+<meta property="og:url" content="https://machgtm.github.io/receipts/check/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Receipts check","url":"https://machgtm.github.io/receipts/check/","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Checks a sales email against the Receipts Standard: which sentences make claims, and which show a source.","publisher":{"@type":"Organization","name":"MachGTM","url":"https://machgtm.com"},"isBasedOn":"https://github.com/MachGTM/receipts/blob/main/STANDARD.md"}
+</script>
+<style>
+:root{
+  --bg:#F6F7F8; --surface:#FFFFFF; --ink:#1A2028; --ink2:#4A5560; --muted:#6B7785; --line:#E3E7EB;
+  --accent:#1E9E50; --accent-ink:#0F6E36; --accent-bg:#E6F6EC;
+  --bad:#B42318; --bad-bg:#FDECEA; --warn:#9A5B00; --warn-bg:#FFF3DC; --ask:#1F5FAD; --ask-bg:#E8F0FB;
+  --focus:#1F5FAD;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12161B; --surface:#1A2028; --ink:#F2F4F6; --ink2:#C3CAD2; --muted:#9AA4AF; --line:#2A323C;
+    --accent:#24D064; --accent-ink:#7FE3A5; --accent-bg:#16301F;
+    --bad:#FF8A80; --bad-bg:#3A1A18; --warn:#F5C26B; --warn-bg:#352812; --ask:#8DB8F2; --ask-bg:#172638; --focus:#8DB8F2;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12161B; --surface:#1A2028; --ink:#F2F4F6; --ink2:#C3CAD2; --muted:#9AA4AF; --line:#2A323C;
+  --accent:#24D064; --accent-ink:#7FE3A5; --accent-bg:#16301F;
+  --bad:#FF8A80; --bad-bg:#3A1A18; --warn:#F5C26B; --warn-bg:#352812; --ask:#8DB8F2; --ask-bg:#172638; --focus:#8DB8F2;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-underline-offset:3px}
+a:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header.top{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+.brand{display:flex;align-items:center;gap:10px;font:600 20px Outfit,sans-serif;text-decoration:none}
+.brand svg{width:30px;height:30px}
+.top nav a{color:var(--ink2);font-weight:500;margin-left:20px;text-decoration:none}
+.top nav a:hover{text-decoration:underline}
+.hero{padding:28px 0 8px}
+.kicker{font-weight:600;color:var(--accent-ink);letter-spacing:.2px}
+h1{font:600 clamp(34px,5vw,52px)/1.08 Outfit,sans-serif;letter-spacing:-1px;margin:10px 0 14px}
+.lede{font-size:19px;color:var(--ink2);max-width:680px;margin:0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:28px 0 40px}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--surface);border-radius:14px;padding:22px}
+label.lbl{display:block;font-weight:600;margin-bottom:8px}
+textarea{width:100%;min-height:330px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:14px;font:15px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--bg);color:var(--ink)}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;align-items:center}
+button{font:600 15px Figtree,sans-serif;border-radius:10px;padding:11px 16px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+button.primary{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+button:hover{filter:brightness(.97)}
+.hint{font-size:14px;color:var(--muted);margin:10px 0 0}
+.score{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.score .big{font:700 64px/1 Outfit,sans-serif;letter-spacing:-2px}
+.score .of{font-size:19px;color:var(--ink2)}
+.verdict{margin:6px 0 14px;font-weight:600}
+.counts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;padding:0;list-style:none}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;border-radius:999px;padding:4px 10px}
+.chip i{width:9px;height:9px;border-radius:50%;display:inline-block;background:currentColor}
+.c-sourced{color:var(--accent-ink);background:var(--accent-bg)}
+.c-unsourced{color:var(--bad);background:var(--bad-bg)}
+.c-guess{color:var(--warn);background:var(--warn-bg)}
+.c-asked{color:var(--ask);background:var(--ask-bg)}
+.mail{border-top:1px solid var(--line);padding-top:12px}
+.s{display:block;padding:9px 10px;margin:4px 0;border-radius:8px;border-left:3px solid transparent}
+.s small{display:block;font-size:13.5px;color:var(--ink2);margin-top:3px}
+.s b.tag{font-size:12px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;margin-right:6px}
+.s.sourced{background:var(--accent-bg);border-left-color:var(--accent)} .s.sourced b.tag{color:var(--accent-ink)}
+.s.unsourced{background:var(--bad-bg);border-left-color:var(--bad)} .s.unsourced b.tag{color:var(--bad)}
+.s.guess{background:var(--warn-bg);border-left-color:var(--warn)} .s.guess b.tag{color:var(--warn)}
+.s.asked{background:var(--ask-bg);border-left-color:var(--ask)} .s.asked b.tag{color:var(--ask)}
+.s.plain{color:var(--ink2)}
+.empty{color:var(--muted)}
+.share{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+section.more{padding:8px 0 48px}
+section.more h2{font:600 28px/1.2 Outfit,sans-serif;margin:28px 0 10px}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;padding:0;list-style:none;margin:14px 0 0}
+.rules li{background:var(--surface);border-radius:12px;padding:16px}
+.rules b{display:block;font-family:Outfit,sans-serif;font-size:18px;margin-bottom:4px}
+.note{color:var(--ink2);max-width:760px}
+footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--muted);font-size:14px}
+.sr{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="https://machgtm.com" aria-label="MachGTM home"><svg viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="28" fill="#1A2028"/><g fill="none" stroke="#F2F4F6" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"><path d="M28 46 L44 60 L28 74" stroke-opacity="0.32"/><path d="M40 36 L66 60 L40 84" stroke-opacity="0.62"/><path d="M54 26 L90 60 L54 94"/></g><circle cx="90" cy="60" r="7" fill="#24D064"/></svg>MachGTM</a>
+    <nav><a href="https://github.com/MachGTM/receipts/blob/main/STANDARD.md">The standard</a><a href="https://github.com/MachGTM/receipts">GitHub</a></nav>
+  </header>
+
+  <div class="hero">
+    <div class="kicker">Free receipts check</div>
+    <h1>Does your sales email have receipts?</h1>
+    <p class="lede">Paste a cold email. See which sentences make a claim, which ones show where it came from, and which guesses should be questions. It runs in your browser: nothing you paste leaves this page.</p>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <label class="lbl" for="email">Your email</label>
+      <textarea id="email" spellcheck="false" placeholder="Subject: ...&#10;&#10;Hi Priya,&#10;&#10;Paste the whole email here, with any links or footnotes."></textarea>
+      <div class="row">
+        <button class="primary" id="go">Check it</button>
+        <button id="ex-bad">Try a typical AI email</button>
+        <button id="ex-good">Try one with receipts</button>
+      </div>
+      <p class="hint">Sources count when the sentence has a link, or a footnote like [1] with a link at the bottom.</p>
+    </div>
+
+    <div class="panel" id="out" aria-live="polite">
+      <p class="empty">Your result shows up here.</p>
+    </div>
+  </div>
+
+  <section class="more">
+    <h2>What it checks</h2>
+    <p class="note">These are four of the seven rules in the <a href="https://github.com/MachGTM/receipts/blob/main/STANDARD.md">Receipts Standard</a>, an open standard for sales messages written with AI. Its short version: no source, no send.</p>
+    <ul class="rules">
+      <li><b>Facts about them</b>"I saw you're expanding" needs the link to where you saw it, and when.</li>
+      <li><b>Facts about you</b>"We grew pipeline 3x" needs the case study. "Trusted by 500 teams" needs the list.</li>
+      <li><b>Guesses</b>"You're probably struggling with..." is a guess. Ask it as a question instead.</li>
+      <li><b>Market claims</b>"Most sales teams waste half their week" needs the study behind it.</li>
+    </ul>
+    <h2>What it can't do</h2>
+    <p class="note">It's a pattern check, not a fact check. It spots sentences that look like claims and looks for a source next to them. It can't tell whether a claim is true or whether the link says what you say it says. That part is still the job of the person who approves the email.</p>
+    <p class="note">Want every claim sourced before the email is written? <a href="https://github.com/MachGTM/lead-finder">Lead Finder</a> is a free Claude plugin that finds companies with a link behind every fact. <a href="https://machgtm.com">MachGTM</a> writes and sends sourced emails that you approve one by one.</p>
+  </section>
+
+  <footer>Made by <a href="https://machgtm.com">MachGTM</a>. Follows the <a href="https://github.com/MachGTM/receipts/blob/main/STANDARD.md">Receipts Standard v1.0</a>. The code is open: <a href="https://github.com/MachGTM/receipts">github.com/MachGTM/receipts</a>. No tracking on this page.</footer>
+</div>
+
+<script src="receipts-check.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var EX_BAD = "Subject: Quick idea for Acme's 3x growth\n\nHi Priya,\n\nI saw Acme is expanding into Europe. Congrats on the recent funding!\nTeams like yours usually struggle with pipeline once they pass 50 reps.\nWe helped a fintech like you grow pipeline by 312% in 90 days.\nTrusted by 500+ revenue teams, we're the #1 AI SDR on the market.\nWorth a 15-minute call next week?\n\nBest,\nSam";
+  var EX_GOOD = "Subject: Your 6 open SDR roles\n\nHi Priya,\n\nYou have 6 open SDR roles on your careers page, 4 posted this month [1].\nYour CEO said on 3 Oct that Europe is the next market [2].\nHow are you thinking about ramping the new reps before Q1?\nWe wrote up how one services firm cut ramp time from 90 to 45 days: https://example.com/case-study\nOpen to a 20-minute call on Thursday?\n\nThanks,\nSam\n\n[1] https://example.com/careers\n[2] https://example.com/ceo-post";
+  var TAGS = { sourced: "Source", unsourced: "No source", guess: "Guess", asked: "Question", plain: "" };
+  var last = null;
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  function verdict(r) {
+    if (r.claims === 0) return "No claims to check. It asks rather than tells.";
+    if (r.score === 100) return "Every claim shows where it came from.";
+    if (r.score >= 70) return "Close. Source the rest or turn them into questions.";
+    if (r.sourced === 0) return "None of the claims show a source.";
+    return "Most claims don't show where they came from.";
+  }
+
+  function render(r) {
+    last = r;
+    var h = '<div class="score"><span class="big">' + r.sourced + ' of ' + r.claims + '</span><span class="of">' + (r.claims === 1 ? 'claim shows' : 'claims show') + ' a source</span></div>';
+    h += '<p class="verdict">' + esc(verdict(r)) + '</p>';
+    h += '<ul class="counts">';
+    h += '<li class="chip c-sourced"><i></i>' + r.sourced + ' with a source</li>';
+    h += '<li class="chip c-unsourced"><i></i>' + r.unsourced + ' without</li>';
+    h += '<li class="chip c-guess"><i></i>' + r.guesses + (r.guesses === 1 ? ' guess' : ' guesses') + ' stated as fact</li>';
+    h += '<li class="chip c-asked"><i></i>' + r.asked + (r.asked === 1 ? ' question' : ' questions') + '</li>';
+    h += '</ul><div class="mail">';
+    r.items.forEach(function (it) {
+      h += '<span class="s ' + it.status + '">' + (TAGS[it.status] ? '<b class="tag">' + TAGS[it.status] + '</b>' : '') + (it.where === "subject" ? '<b class="tag">Subject</b>' : '') + esc(it.text);
+      if (it.status !== "plain") h += '<small>' + esc(it.why) + '</small>';
+      h += '</span>';
+    });
+    h += '</div><div class="share row"><button id="dl">Download score card</button><button id="cp">Copy result</button><span class="hint" id="msg" role="status"></span></div>';
+    $("out").innerHTML = h;
+    $("dl").onclick = downloadCard;
+    $("cp").onclick = function () {
+      var t = r.summary + ". Checked with the free receipts check: https://machgtm.github.io/receipts/check/";
+      (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { $("msg").textContent = "Copied."; }, function () { $("msg").textContent = t; });
+    };
+  }
+
+  function downloadCard() {
+    var r = last; if (!r) return;
+    var c = document.createElement("canvas"); c.width = 1200; c.height = 630;
+    var x = c.getContext("2d");
+    x.fillStyle = "#12161B"; x.fillRect(0, 0, 1200, 630);
+    x.fillStyle = "#9AA4AF"; x.font = "600 26px Figtree, sans-serif"; x.fillText("RECEIPTS CHECK", 80, 110);
+    x.fillStyle = "#F2F4F6"; x.font = "700 150px Outfit, sans-serif"; x.fillText(r.sourced + " of " + r.claims, 72, 290);
+    x.font = "600 44px Outfit, sans-serif"; x.fillText("claims in this sales email show a source.", 80, 370);
+    x.fillStyle = r.score === 100 ? "#24D064" : "#FF8A80"; x.font = "600 30px Figtree, sans-serif";
+    x.fillText(r.guesses ? r.guesses + (r.guesses === 1 ? " guess" : " guesses") + " stated as fact." : (r.score === 100 ? "No source, no send. Passed." : "Unsourced claims: " + r.unsourced + "."), 80, 440);
+    x.fillStyle = "#9AA4AF"; x.font = "500 26px Figtree, sans-serif"; x.fillText("Check yours free at machgtm.github.io/receipts/check", 80, 560);
+    x.fillStyle = "#24D064"; x.beginPath(); x.arc(1110, 548, 12, 0, Math.PI * 2); x.fill();
+    var a = document.createElement("a"); a.download = "receipts-check.png"; a.href = c.toDataURL("image/png"); a.click();
+  }
+
+  function run() { render(ReceiptsCheck.check($("email").value)); }
+  $("go").onclick = run;
+  $("ex-bad").onclick = function () { $("email").value = EX_BAD; run(); };
+  $("ex-good").onclick = function () { $("email").value = EX_GOOD; run(); };
+  $("email").addEventListener("keydown", function (e) { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") run(); });
+})();
+</script>
+</body>
+</html>
