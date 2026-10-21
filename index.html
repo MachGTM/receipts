@@ -1,0 +1,62 @@
+---
+layout: default
+title: "Receipts: no source, no send"
+description: "An open standard, a free checker and open data for sales messages written with AI. Every claim shows its source, guesses are asked, and a person approves each message."
+---
+<h1>Receipts: no source, no send</h1>
+<p>An open standard, a free checker and open data for sales messages written with AI.</p>
+<p>AI can write a thousand cold emails an hour. Most of them sound sure of things nobody checked. The fix is simple to say: every claim shows where it came from, guesses are asked instead of stated, and a person approves each message before it goes out.</p>
+<p><a href="STANDARD.html"><img alt="Receipts Standard v1: checked" src="badge/checked.svg" /></a></p>
+<h2>What's here</h2>
+<table>
+<tbody>
+<tr>
+<td><strong><a href="STANDARD.html">The Receipts Standard v1.0</a></strong></td>
+<td>Seven rules, two levels, a score and a small JSON format for receipts. CC BY 4.0.</td>
+</tr>
+<tr>
+<td><strong><a href="check/">The receipts check</a></strong></td>
+<td>Paste an email and see which sentences make claims and which show a source. Runs in your browser; nothing leaves the page. Live at <a href="https://machgtm.github.io/receipts/check/">machgtm.github.io/receipts/check</a>.</td>
+</tr>
+<tr>
+<td><strong><a href="hiring-index/2026-10/">Who's hiring SDRs, October 2026</a></strong></td>
+<td>123 B2B software companies, 9,931 open roles, every SDR role linked to its post. 53% have an open SDR role; 8 have a "GTM engineer" opening.</td>
+</tr>
+<tr>
+<td><strong><a href="INDEX.html">The AI SDR Receipts Index</a></strong></td>
+<td>An open count of how many claims in AI-written sales emails show a source. <a href="https://github.com/MachGTM/receipts/issues/new?template=submit-email.yml">Send us one</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2>The seven rules, short version</h2>
+<ol>
+<li>Every claim about the prospect has a receipt: a public link, the exact words, a date.</li>
+<li>Every claim about the seller has a receipt too.</li>
+<li>Guesses are asked, never stated.</li>
+<li>Unknowns stay unknown.</li>
+<li>Signals are dated, and old ones aren't called recent.</li>
+<li>A named person approves each message.</li>
+<li>Receipts come only from fair, public sources.</li>
+</ol>
+<p>Read <a href="STANDARD.html">the full standard</a> for examples, the score and the receipt format.</p>
+<h2>Use it</h2>
+<ul>
+<li><strong>Check an email</strong>: <a href="https://machgtm.github.io/receipts/check/">the receipts check</a>, or open <code>check/index.html</code> from this repo.</li>
+<li><strong>Check and fix an email with Claude or Codex</strong>: the <code>check-receipts</code> skill in <a href="https://github.com/MachGTM/lead-finder">Lead Finder</a> finds a source for each claim and rewrites the rest as questions.</li>
+<li><strong>Use the check in your own tool</strong>: <code>check/receipts-check.js</code> has no dependencies and works in the browser and Node.</li>
+</ul>
+<pre><code class="language-js">const { check } = require(&quot;./check/receipts-check.js&quot;)
+check(&quot;I saw you raised a Series A. Worth a call?&quot;).summary
+// &quot;Receipts: 0 of 1 claims (0)&quot;
+</code></pre>
+<ul>
+<li><strong>Say you follow it</strong>: add the badge and link to the standard.</li>
+</ul>
+<pre><code class="language-markdown">[![Receipts Standard v1: checked](https://raw.githubusercontent.com/MachGTM/receipts/main/badge/checked.svg)](https://github.com/MachGTM/receipts/blob/main/STANDARD.md)
+</code></pre>
+<p>Anyone may adopt the standard, including companies that compete with MachGTM.</p>
+<h2>Contributing</h2>
+<p>Suggest a change to the standard, report a sentence the checker gets wrong, or send an AI-written email for the index: <a href="https://github.com/MachGTM/receipts/issues/new/choose">open an issue</a>.</p>
+<h2>Licence</h2>
+<p>The standard, the index method and the data are <a href="https://github.com/MachGTM/receipts/blob/main/LICENSE-CC-BY-4.0.md">CC BY 4.0</a>. The code (<code>check/</code>) is <a href="https://github.com/MachGTM/receipts/blob/main/LICENSE">MIT</a>.</p>
+<p>Maintained by <a href="https://machgtm.com">MachGTM</a>, an AI SDR that writes every claim with its source and sends only what you approve.</p>
